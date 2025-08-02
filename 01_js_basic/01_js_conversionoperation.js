@@ -56,3 +56,36 @@ let score6="mayuri"
 let valueInNumber5= Number(score6)
 console.log(typeof valueInNumber5)
 console.log(valueInNumber5)
+
+console.log("-----------------------------")
+console.log("-----------------------------")
+/*Convert into Boolean */
+
+/* when we give 1 number value it will convert into true as we know that ture means 1 */
+let isLoggedIn=1
+let BooleanIsLoggedIn = Boolean(isLoggedIn)
+
+console.log(BooleanIsLoggedIn) 
+
+
+console.log("-----------------------------")
+/* when we give 0 number value it will convert into false as we know that false means 0 */
+let isLoggedIn1=0
+let BooleanIsLoggedIn1 = Boolean(isLoggedIn1)
+
+console.log(BooleanIsLoggedIn1) 
+
+console.log("-----------------------------")
+/* when we give empty string value it will convert into false as their is no value*/
+let isLoggedIn2=""
+let BooleanIsLoggedIn2 = Boolean(isLoggedIn2)
+
+console.log(BooleanIsLoggedIn2)
+
+
+console.log("-----------------------------")
+/* when we give any string value it will convert into true as their is value in that string */
+let isLoggedIn3="mayuri"
+let BooleanIsLoggedIn3= Boolean(isLoggedIn3)
+
+console.log(BooleanIsLoggedIn3)
