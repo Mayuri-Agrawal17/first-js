@@ -81,3 +81,30 @@ console.log(Object.entries(obj1)) //Object.entries(obj) returns an array of key�
 
 // --hasOwnProperty -- 
 console.log(obj1.hasOwnProperty("1")) //checls if given property present or not
+
+
+
+
+
+// 🔹 Destructuring
+// 👉 Destructuring means unpacking values from arrays or objects into variables in a clean and short way.
+
+// 🔹 Object Destructuring
+
+let employee = { name: "Rahul", age: 25 };
+
+// Old way:
+let n = employee.name;
+let a = employee.age;  //need to write the whole think again nad again
+
+// Destructuring way:
+let { name, age } = employee;  //so here in {} we are giving the keys and now we can directly call it will keys no need of object name
+
+console.log(name); // "Rahul"
+console.log(age);  // 25
+
+
+// 💡 You can also rename:
+
+let { name: fullName } = employee;  //here we renamed it now we can use the new name
+console.log(fullName); // "Rahul"
