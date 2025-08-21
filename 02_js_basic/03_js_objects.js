@@ -12,7 +12,7 @@ let person = {
 
 
 // ways to create objects
-// 🔹 1. Object Literal
+// 🔹 1. Object Literal      --there are more ways in part 2 of object--
 //Directly written using {}.
 
 const obj1 = {
@@ -24,7 +24,7 @@ const obj1 = {
     "is Happy" : "yes"
 }
 
-//different ways to access elemrnt of object
+//different ways to access elemet of object
 // 1. "." method
 console.log(obj1.email) //but not recomended bcs if we decade manulally key as string in that case we have no way to access that 
 // with this method of accessing object bcs (obj."is Happy")is not a correct.
