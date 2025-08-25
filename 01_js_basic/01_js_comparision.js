@@ -82,7 +82,55 @@ if (!isRainy) {
 }
 
 
-//. Ternary Operator (Short form of if-else)
+//4. Ternary Operator (Short form of if-else)
 let age3 = 18;
 let result = (age3 >= 18) ? "Adult" : "Minor";
 console.log(result); // Adult
+
+
+//5.Nullish Coalescing Operator?
+
+// 👉 ?? is a logical operator in JavaScript.
+// It is used to give a default value when a variable is either null or undefined.
+
+// 💡 It’s like saying:
+// If the left side is null/undefined → use the right side. Otherwise → use the left side.
+
+//.
+
+// 🟢 Syntax
+let marks = value1 ?? value2;
+
+
+// If value1 is not null or undefined → result = value1.
+// If value1 is null or undefined → result = value2.
+
+// Example 1: Basic
+let name = null;
+let defaultName = "Guest";
+
+let user = name ?? defaultName;
+console.log(user);  //Because name was null, so it picked "Guest".
+
+//🟢 Example 2: With Undefined
+let agee;
+let defaultAge = 18;
+
+let userAge = agee ?? defaultAge;
+
+console.log(userAge); // Because age is undefined. so o/p=18
+
+
+//🟢 Example 3: Value Present
+let city = "Delhi";
+let defaultCity = "Mumbai";
+
+let userCity = city ?? defaultCity;
+console.log(userCity); //Because city is already defined (not null/undefined). so o/p = delhi
+
+
+
+
+
+
+
