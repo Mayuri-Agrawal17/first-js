@@ -41,3 +41,48 @@ But in equality (==), it does not convert it to 0 — only treats it equal to un
 
 //=== checks TYPE + VALUE  i.e. IT WILL CHECK IF THE TYPE OF THE GIVEN VALUE TO COMPARE IS SAME + THE VALUE IS ALSO SAME THAT ONLY 
 // GIVES TRUE
+
+//!= → not equal (value)
+// !== → not equal (value + type)
+
+
+//Other operators
+
+//1. Arithmetic Operators (maths)
+console.log(5 + 2);  // 7
+console.log(5 - 2);  // 3
+console.log(5 * 2);  // 10
+console.log(5 / 2);  // 2.5
+console.log(5 % 2);  // 1 (remainder)
+console.log(2 ** 3); // 8 (power)
+
+
+//2 Logical Operators
+
+// Used with conditions in if.
+// AND (&&) → true if both are true
+// OR (||) → true if any one is true
+// NOT (!) → reverses condition
+
+let age = 20;
+let hasID = true;
+
+if (age >= 18 && hasID) {
+  console.log("You can enter.");//👉 Both conditions true → prints "You can enter."
+}
+
+let age2 = 16;
+if (age2 >= 18 || hasID) {
+  console.log("Allowed (one condition is true).");
+}
+
+let isRainy = false;
+if (!isRainy) {
+  console.log("Go outside, it's not raining.");
+}
+
+
+//. Ternary Operator (Short form of if-else)
+let age3 = 18;
+let result = (age3 >= 18) ? "Adult" : "Minor";
+console.log(result); // Adult
