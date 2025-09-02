@@ -110,3 +110,10 @@ forEach is only available for arrays (not objects, not Maps, etc.).
 It does not return anything. It always returns **undefined**.
 You cannot break/continue inside forEach.
 It always runs through the entire array. */
+
+//for ech returns undefined
+const returnvalue=student.forEach((item)=>{
+   console.log(item)
+   // return item ;   even if we return something manually like this still it will return undefined
+})
+console.log(returnvalue) //undefined
