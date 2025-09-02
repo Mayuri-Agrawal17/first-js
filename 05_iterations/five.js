@@ -103,3 +103,10 @@ const coding=[
 coding.forEach((element)=>{
    console.log(`language name ${element.languagename} and its file name is ${element.languagefile}`)
 })
+
+/*🚨-------------------------- Important points about forEach
+
+forEach is only available for arrays (not objects, not Maps, etc.).
+It does not return anything. It always returns **undefined**.
+You cannot break/continue inside forEach.
+It always runs through the entire array. */
