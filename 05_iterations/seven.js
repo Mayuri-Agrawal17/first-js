@@ -39,9 +39,9 @@ console.log(upper_case)
 //--------------Chaining with other methods
 const nums=[1,2,3,4,5]
 const result = nums
-         .map(num=>num*2)
-         .filter(num => num>5)
-         .map(num=>num+1)
+         .map(n=>n*2)
+         .filter(n=> n>5)
+         .map(n=>n+1)
 
 console.log(result) //[ 7, 9, 11 ]
 console.log(nums)  //[ 1, 2, 3, 4, 5 ]
