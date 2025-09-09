@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .background{
+            background-color: rgba(0, 0, 0, 0.774);
+            color: white;
+        }
+    </style>
+  
+</head>
+<body class="background">
+
+    <h1 id="title" class="heading">DOM Learinig from chain and code</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+
+    <h1 id="code" class="language">DOM Learinig from chain and code
+        <span style="display: none;"> hidden text for some</span>
+    </h1>
+
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+    <h2>Lorem.</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, quas.</p>
+
+    <ul>
+        <li class="list-item">one</li>
+        <li class="list-item">two</li>
+        <li class="list-item">three</li>
+    </ul>
+
+    <script>
+
+        console.log(document.getElementById('title'))
+        /*1.getElementById("id")
+        Finds an element by ID
+        returns Single element (object)
+        example-document.getElementById("title")*/
+
+
+        console.log(document.getElementById('title').id)
+        //we can use .id,.className etc,after this to get only the id or class name for that
+        console.log(document.getElementById('title').className)
+
+//*******************************************************************************************************************************************
+        
+        console.log(document.getElementById('title').getAttribute('id'))
+        /*getAttribute("attr")
+        Get value of an attribute
+        example-img.getAttribute("src")
+
+
+        here in this example what we are doing is -
+        Find the element with ID "title". [getElementById('title')]
+        Check its id attribute value.     [getAttribute('class')]
+        Print that value to the console.*/
+        console.log("hiiiiiiiiiiii"+ document.getElementById('title').getAttribute('class'))
+
+//*******************************************************************************************************************************************
+
+        console.log(document.getElementById('title').setAttribute('class','test'))
+        /*setAttribute("attr", "value")
+        Set/change an attribute
+        Example-img.setAttribute("src", "pic.jpg")
+        here we are setting class attribute as test(which is originally called heading)*/
+
+//*******************************************************************************************************************************************
+
+        //You can change styles dynamically using the .style property. 
+        //we will style the section using the id value(we can do that in console of html page also)
+        const identity = document.getElementById('code')
+        console.log(identity)
+        identity.style.backgroundColor="green"
+        identity.style.borderRadius="12px"
+        
+//*******************************************************************************************************************************************
+
+        //Once you have selected an element, you can read or change its content.
+
+        /*textContent :- Gets/sets all text (hidden text too)*/
+        console.log(identity.textContent) //o/p=DOM Learinig from chain and code hidden text for some
+
+        //innerText :- Gets/sets only visible text
+        console.log(identity.innerText) //DOM Learinig from chain and code
+
+        //innerHTML :- Gets/sets HTML content inside an element
+        console.log(identity.innerHTML)//o/p=DOM Learinig from chain and code <span style="display: none;"> hidden text for some</span>
+
+//*******************************************************************************************************************************************
+
+        /*querySelector("css-selector")
+        Finds the first matching element (CSS rules)
+        return Single element
+        example:-document.querySelector(".container")*/
+        console.log(document.querySelector('h1'))
+        console.log(document.querySelector('#code')) //finding element with id (using #before id name same as we do in css styling)
+        console.log(document.querySelector('.test'))//finding element with class (using .before classname same as we do in css styling)
+        //similarlly we can do lot of queryselector usinf css selector pattern
+        
+//*******************************************************************************************************************************************
+
+        /*querySelectorAll() is a DOM method used to select multiple elements from a webpage using CSS selectors.
+        It returns a NodeList, which looks like an array but is not exactly an array.
+        you can use following features of arry with NodeList -> .length property ,Indexing [0], .forEach() method	
+        but not the Other array methods like .map(), .filter()	*/
+        const num=document.querySelectorAll('li') //it will give us the node list with lenght 3 as we have3 element with li tag
+        console.log(num)
+        num[0].style.color="green"//even if their is only 1 elemnt in nodelist then also we have to give the index(like[0]here)
+        num.forEach((n)=> n.style.backgroundColor="red")
+
+        /*getElementsByClassName("class")
+        Select all HTML elements that share a specific class name.
+        returns- HTMLCollection of element (array-like)
+        example->document.getElementsByClassName("box")*/
+        const temp=document.getElementsByClassName('list-item')
+        console.log(temp)
+        //as we cannot loop on html collection so we can convert it into array and then can apply all methods of array 
+        // syntax= Array.from(varibale name from which you want to convert into array)
+        const temarray=Array.from(temp)  //similarlly we can convert nodelist into array
+        console.log(temarray)
+    </script>
+</body>
+</html>
+
+<!-- DOM Methods in JavaScript
+
+DOM methods are functions provided by the browser to interact with the DOM tree.
+They let you find, add, update, and delete HTML elements dynamically.
+
+
+*********we have use script tag in the last of body tag to js code but we can aslo make a new js fine and write thr js over there and then connect that 
+here. also for practice we can write it in the console (right click >> inspect >> console) of html chrome page and get thr output over 
+their .same fot the o/p for script tag and file i.e. we get o/p in console of html chrome page (which we get at a local server after
+going live)***************
+
+
+
+-----We write "document." in JavaScript because document is a built-in object provided by the browser that represents the entire HTML 
+page loaded in the browser window.
+
+Why document is Needed
+When you want to select, read, or modify something in your HTML page, JavaScript needs to know where to look.
+The browser creates the DOM tree and keeps it inside the document object.
+So before accessing anything, you must start from the root, i.e., document.-->
+
+
