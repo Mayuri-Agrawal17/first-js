@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | chai and code </title>
+</head>
+<body style="background-color: blueviolet; color: aliceblue;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thrusday</div>
+    </div>
+</body>
+<script>
+    const par= document.querySelector('.parent')
+    console.log(par)
+    console.log(par.children)
+    /*.children is a property in JavaScript that gives you all the direct child elements of a specific HTML element.
+    returns-A live HTMLCollection of child elements
+    Direct children only
+    Does NOT include grandchildren (nested deeper elements)
+    Array-like-Can use indexing ([0], [1]), but not array methods like .map() directly*/
+    console.log(par.children[1].innerHTML)
+
+/*********************************************************************************************************************************************/
+
+    console.log(par.firstElementChild)
+    /*firstElementChild returns the first direct child element of a parent element.
+    Direct Child->Does NOT go inside nested children
+    If Empty->Returns null if no child elements are found*/
+
+    console.log(par.lastElementChild)
+
+/**********************************************************************************************************************************************/
+ 
+    //if you have child element in a constant and you want to know the parent then use this
+    const child= document.querySelector('.day')
+    console.log(child.parentElement)
+
+/**********************************************************************************************************************************************/
+ 
+    /*.nextElementSibling is used to get the very next sibling element of a given element in the DOM tree.
+    Sibling means elements that share the same parent.*/
+    console.log(child.nextElementSibling)
+
+/**********************************************************************************************************************************************/
+
+    /*.childNodes is a property in JavaScript that gives you a NodeList (like an array) of all child nodes of a specific DOM element.
+
+    Important thing:
+    It includes everything:
+    HTML elements
+    Text nodes (like spaces, new lines)
+    Comments 
+    In HTML, spaces and line breaks are treated as text nodes by the DOM.*/
+    console.log(par.childNodes) //it will gigve a node list of length 9 as we have 5 new lines and 4 div in this par section
+
+</script>
+</html>
