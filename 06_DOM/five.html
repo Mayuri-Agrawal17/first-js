@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | chai aur code</title>
+</head>
+<body style="background-color: cornflowerblue; color: rgb(240, 239, 194);">
+    <ul class="language" style="font-size: 22px;">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+        //createing a function to add list item in ul
+        function addLanguage(langName){
+            const listItem=document.createElement('li');
+            listItem.innerHTML=`${langName}`
+            document.querySelector('.language').appendChild(listItem)
+        }
+        addLanguage("python")
+        addLanguage("java")
+        //but here in this way if the list is very large then we need to traverse the whole list everytime we need to add any element
+        // as we are appending element in end of the list so this is not the most opptimized way 
+
+
+        //optimized way to do the same thing
+        function addOptiLanguage(langName){
+            const li= document.createElement('li')
+            li.appendChild(document.createTextNode(`${langName}`)) //here we are directly creating the text node and append it to li so no 
+            // travesing hence optimized
+            document.querySelector('.language').appendChild(li)
+        }
+        addOptiLanguage("typescript")
+
+
+/****************************************************************************************************************************************/
+
+        //Edit
+        //changeing the text content of second language 
+        const secondlang = document.querySelector("li:nth-child(2)")
+        //nth-child(2) is a CSS pseudo-class selector that targets the second child.
+        //secondlang.innerHTML="MOJO"    //we can do this also but it is not optimizes
+        const newli=document.createElement('li') //creating new li element
+        newli.textContent="mojo"      //adding text in it
+        secondlang.replaceWith(newli) //replacing seconf language with new element
+
+
+        //chaning first elemrnt (javascript) to golang
+        const firstLang = document.querySelector("li:first-child")
+        firstLang.outerHTML='<li>golang</li>'//outerHTML gives you the entire HTML code of the element, 
+        // including the element itself + its content.It can read (get) or replace (set) an element in the DOM.
+        //here we are setting the element
+
+
+        //REMOVE
+        const lastLang = document.querySelector('li:last-child')
+        lastLang.remove()
+
+</script>
+</html>
