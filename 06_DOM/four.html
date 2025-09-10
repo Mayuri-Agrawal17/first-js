@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | chain aur code</title>
+</head>
+<body style="background-color: brown;color: yellow;">
+    
+</body>
+<script>
+
+        //creating element in DOM 
+        const div = document.createElement('div') //Create the empty element
+        console.log(div)
+        div.className="main"//adding a class name
+        div.id="myId"       //addind an id
+        div.setAttribute("title","generated title") //setting other attributes
+        div.style.backgroundColor="white"           //styling the element
+        div.style.color="brown"
+        div.style.padding="8px"
+        div.innerHTML="created element in DOM"       //adding some text inside the div
+        document.body.appendChild(div)           //now finally we are append that div to end of the body now div will vivisble on page 
+</script>
+</html>
