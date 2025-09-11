@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change coloe on click</title>
+    <style>
+       *{
+        margin: 0;
+        padding: 0;
+       }
+        body {
+        display: flex;
+        justify-content: center; /*Centers horizontally*/
+        align-items: center;/* Centers vertically*/
+        height: 100vh;/* Full page height*/
+        margin: 0; /* Remove default margins */
+        }
+       .main{
+        margin: 100px  auto 100px;
+        width: 80%;
+        text-align: center;
+        
+       }
+       .button{
+        width: 150px;
+        height: 150px;
+        margin: 5px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        display: inline-block;
+       }
+       #gray{
+        background: gray;
+       }
+       #yellow{
+        background: rgb(242, 242, 33);
+       }
+       #purple{
+        background: purple;
+       }
+       #brown{
+        background: brown;
+       }
+       #orange{
+        background: orange;
+       }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Click button to change the background color</h1>
+        <span class="button" id="gray"></span>
+        <span class="button" id="yellow"></span>
+        <span class="button" id="purple"></span>
+        <span class="button" id="brown"></span>
+        <span class="button" id="orange"></span>
+        <h2>
+        Try clicking on one of the colors above
+        <span>to change the background color of this page!</span>
+      </h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+    
+</html>
