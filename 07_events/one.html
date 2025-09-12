@@ -1,0 +1,260 @@
+<!-- Events in JavaScript?
+
+An event is something that happens on a webpage.
+
+For example:
+-Clicking a button
+-Typing on the keyboard
+-Hovering the mouse over a link
+-Loading the page
+JavaScript can "listen" for these events and "react" when they happen.
+
+*****************************************************************************************
+
+We use events to make our webpage interactive and dynamic.
+Example:
+When a user clicks a button → Show a message.
+
+Without events, webpages would be static with no user interaction.
+
+******************************************************************************************************
+
+Event Type	     |           Example	                    |           When it Happens
+-----------------|------------------------------------------|----------------------------------
+Mouse Events	 |   click, dblclick, mouseover, mouseout   |  	Mouse clicks or movements
+Keyboard Events	 |   keydown, keyup, keypress	            |    User presses/release keys
+Form Events	     |   submit, change, focus, blur	        |        User interacts with forms
+Window Events	 |   load, resize, scroll, unload	        |    Actions related to window
+Clipboard Events |	 copy, paste, cut	                    |    Copy, paste, or cut actions
+Drag Events	     |   drag, drop, dragover	                |    For drag-and-drop features
+Touch Events	 |   touchstart, touchend	                |    Mobile screen touches 
+
+*************************************************************************************************************
+
+Hoe to handle events in js-
+
+1.Inline Event Handling (Not Recommended)
+(triesd in owl list item below)
+
+ example-<button onclick="alert('Button Clicked!')">Click Me</button>
+
+This works, but hard to manage for big projects.
+
+****************************************************************************************************************
+
+2.DOM Property Method
+(applied for same owl element in script tag comment)
+
+example-<button id="btn">Click Me</button>
+<script>
+  const btn = document.getElementById("btn");
+  btn.onclick = function() {
+    alert("Button Clicked!");
+  };
+</script>
+
+But here, only one function can be assigned.
+
+*****************************************************************************************************************************
+
+3.addEventListener (Recommended)
+
+addEventListener is a JavaScript method that lets you listen for a specific event(like click, hover, keypress etc.) on an HTML element.
+When that event happens, it runs the code (callback function) you provide.
+
+Why use it?
+You can attach multiple event listeners to the same element.
+It keeps HTML and JS separate (clean code).
+Gives you more control like using options
+
+example-<button id="btn">Click Me</button>
+<script>
+  const btn = document.getElementById("btn");
+  btn.addEventListener("click", function() {
+    alert("Button Clicked!");     
+  });
+</script>
+
+explanation -  btn.addEventListener("click", function(){...})
+                        click → The type of event we are listening for.
+                        function() {...} → The code that will run when the button is clicked.
+                        This function is called a callback function because it's called back later, when the event happens.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Events</title>
+</head>
+<body style="background-color: yellowgreen;">
+    <h1 style="color: brown;">Picture Gallery</h1>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt="" <!--onclick="alert('owl clicked by inline')"--> ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+
+    <script>
+        //event handle by DOM property method
+
+        // const btn = document.getElementById('owl')
+        // btn.onclick=function(){
+        //     alert('you clicked on owl by DOM event')
+        // }
+
+        //addEventListner
+        // document.getElementById('owl').addEventListener('click', function(){
+        //     alert('owl clicked by event listner')
+        // })
+
+        //Event Object
+        // Whenever an event happens in Js (like a button click, key press, form submit), the browser automatically creates an object.
+        // This object contains all the details about that event.
+        // The event object is automatically passed as the first argument to the event listener's callback function.(e here)
+
+        document.getElementById('japan').addEventListener('click', function(e){
+            console.log(e)
+            // Here, e is the event object.
+            // When you click the button:
+            // The browser creates an event object.
+            // It sends it to the function automatically.
+
+            // console.log(e) will show everything about that click, like:
+            // Mouse position (x, y).
+            // Element clicked
+            // Event type
+            // Time of click, etc.
+
+            console.log(e.type) //o/p=click. type Shows the type of event (click, keydown, etc.)
+            
+            console.log(e.target) //o/p=giive whole img tag of owl  .The HTML element that triggered the event
+            
+            console.log(e.currentTarget) //The element the listener is attached to
+
+            console.log(e.timeStamp)    //Time (in ms) when the event happened
+
+            console.log(e.clientX,e.clientY)  //Mouse position inside the browser window
+        
+            console.log(e.pageX,e.pageY)    //Mouse position on the entire page
+
+            console.log(e.key)            //Which keyboard key was pressed
+
+            console.log(e.code)         //Physical keyboard key code
+
+            console.log(e.shiftKey,e.ctrlKey,e.altKey)  //Returns true if these keys were held during the event
+
+            // e.preventDefault() //its  a event object method which Stops the default action 
+                                // (like stopping a form from submitting or a link from opening)
+            
+            })
+
+/*****************************************************
+    Event Propagation
+    Event propagation describes how events travel through the DOM tree when an event (like a click) occurs on an element.
+
+    Think of it as bubbling water or falling leaves:
+    When you click on a button inside a div, the event doesn’t just stay on the button, it travels through its parent elements
+    all the way up to the root (<html>).
+            
+    Why We Need to Understand This:
+
+    -To control which element's event runs first.
+    -To stop unwanted behaviors, like when clicking a child triggers a parent event.
+    -It helps us organize complex event handling, like in menus, forms, or games.
+    
+    Three Phases of Event Propagation
+
+    When an event occurs, it goes through three steps/phases:
+
+    Phase	                       |              Direction	                     |             What Happens
+    1. Capturing Phase (Trickling) |    Top → Down (from <html> to target)	     |   Event starts at the root and travels down to the element you clicked.
+    2. Target Phase                |   	At the target element	                 |   The actual element you clicked (or interacted with) receives the event.
+    3. Bubbling Phase	           |    Bottom → Up (from target back to root)   |	 Event bubbles up back through the ancestors.*/
+            
+            
+    // Visual Flow-
+    // <html tag
+    // <body tag
+    //     <div tag
+    //     <button tag Click Me button tag closed
+    //     div tag closed
+    // body closed
+    // html tah closed
+
+    /*if you click the <button>
+    Capturing: html → body → div → button
+    Target: button
+    Bubbling: button → div → body → html
+    ************************************************************************************************/
+
+            
+            //Applying caption on above html code
+
+/*code->>>  document.getElementById('images').addEventListener('click',function(e){
+                console.log('click inside the ul')
+            } , false)*/
+
+            //when you use addEventListener(), the third parameter (or option) is by default false,(we can choose not to writr false)
+            //which means bubbling phase is used automatically.
+
+/*code->>>  document.getElementById('owl').addEventListener('click',function(e){
+                console.log('click in the owl')
+            } )*/
+
+            // when we click on owl-(it will run owl event as well as image event as image is parent of owl)
+            //o/p=click in the owl
+            //    click inside the ul
+
+            /**Why?
+            The event first happens on the owl image (target).
+            Then bubbles up to the parent ul./
+
+/************************************************************************************************************************/
+
+            //If you want the parent to catch the event first:
+
+/*code->>   document.getElementById('images').addEventListener('click',function(e){
+                console.log('click inside the ul')
+            } , true) // <-- true = capturing phase
+            
+             document.getElementById('river').addEventListener('click',function(e){
+                console.log('river')
+            } , true)*/
+
+/************************************************************************************************************************/
+
+          //Sometimes, you don’t want an event to bubble up or trickle down.
+          // then use Method: stopPropagation()
+          // Stops the event from going any further in the propagation chain.
+         
+           document.getElementById('image').addEventListener('click',function(e){
+            console.log('parent')
+            e.stopPropagation() //now when we click on this chils thwn it will not propogate
+          })
+
+          document.getElementById('prayer').addEventListener('click',function(e){
+            console.log('prayer clicked')
+            e.stopPropagation() //now when we click on this chils thwn it will not propogate
+          })
+        
+          //if the parent is true(capturing phase) then it will run first so we cannot stop that by child stop propogation
+    </script>
+</body>
+</html>
