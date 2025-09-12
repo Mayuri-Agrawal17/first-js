@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Events</title>
+</head>
+<body style="background-color: yellowgreen;">
+    <h1 style="color: brown;">Picture Gallery</h1>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt="" <!--onclick="alert('owl clicked by inline')"--> ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=
+                compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+
+    <script>
+        //now we want that if anybody click on an image then image gets disappeared
+
+        document.getElementById('images').addEventListener('click',function(e){
+            console.log(e.target)           //it will print the image tag of clicked image
+
+            // now we check if the clicked element id img tag or not bcz if it is li and we didnt chcekd it then all the image will 
+            // get removed as parent of li is ui and we are removing the parent of clicked event here
+            if(e.target.tagName === 'IMG'){   //e.target.tagname will give you the tag of clicked elemnet like li,ui,img etc
+                const removeIt = e.target.parentNode   //it will give the parent of clicked element (li here) 
+                                                       // as we need to remove the whole li tag og clicked image
+                removeIt.remove()                      //remove methoed will remove the element
+            }
+        })
+    </script>
+</body>
+</html>
