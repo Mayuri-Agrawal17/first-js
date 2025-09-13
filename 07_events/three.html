@@ -1,0 +1,102 @@
+<!--
+JavaScript normally runs synchronously, which means it executes 1 line after another & if 1 line takes time, the whole program waits.
+This is fine for quick tasks, but what about slow operations like fetching data from net or read a file If JS waited for them, the 
+browser would freeze and feel unresponsive.
+
+To solve this, JavaScript uses asynchronous programming, which allows it to start a slow task and continue doing other work while 
+waiting for that task to finish. It doesn’t actually run two tasks at the same time, because JS is single-threaded — there is only 
+one main thread running code. Instead, the slow task is handed over to the browser or Node.js, and when it finishes, JS is notified 
+so it can handle the result later.
+ 
+
+The system that coordinates this is called the Event Loop.
+
+Here’s how it works:
+Your code runs line by line on the call stack (the main thread).
+
+When you start something async like setTimeout or fetch, JS gives that task to the browser/Node background system and continues 
+running the next lines.
+
+When the background system finishes, it places a callback into a queue, waiting to be picked up.
+
+Once the call stack is empty, the event loop takes the next callback from the queue and runs it.
+
+But not all tasks have the same priority. 
+
+There are two main queues:
+-Microtask queue: Very high priority. Promises .then or await callbacks go here.
+-Macrotask queue: Lower priority. Timers (setTimeout), DOM events, and others go here.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>I will do it</h1>
+    <button id="nonStop">Non Stop</button>
+
+    <script>
+
+        /*setTimeout() is a built-in function in JavaScript.
+        It runs a piece of code or function after a delay (in milliseconds).
+        It does not pause your whole code, it just schedules the code to run later.
+                
+        JavaScript is single-threaded → it can run only one task at a time.
+        setTimeout() is handled by the browser's Web API, not the main thread.
+        After the timer ends, the callback function is sent to the Event Queue.
+        The Event Loop checks if the call stack is empty → if yes, it pushes the function back to be executed.
+
+        This is why setTimeout() doesn't block the rest of your code.
+        */
+        setTimeout(function(){
+            console.log("Mayuri")
+        },2000)
+
+
+        //setTimeout usinf named function as passjust the reference of thr function
+
+        const print =function(){
+            console.log("chinu")
+        }
+        setTimeout(print, 1000);
+
+
+        //Passing Zero Delay
+
+        console.log("start")
+
+        setTimeout(() => {
+            console.log("timout ith 0ms delay")
+        }, 0);
+
+        console.log("end")
+    /*o/p=  Start
+            End
+            Timeout with 0 ms delay
+            
+            Even if you set 0 milliseconds, the function does NOT run immediately.
+            It waits until the current code finishes, then the event loop runs it.
+            This shows that setTimeout() is always asynchronous.*/
+
+        
+        //clearTimeout-If you schedule a function but change your mind, you can cancel it using clearTimeout
+        const changeText= function(){ 
+            document.querySelector('h1').innerHTML="I am the BEST"}
+        const cantChange = setTimeout(changeText, 2000);
+
+        clearTimeout(cantChange) //the heading will never change
+
+        //but but but this is not how real time senarios are bcz if it is not at all working whats the whole point then 
+        //so what we will do is we sayv that if someone  press the button then dont chnage the heading
+
+        const canChange=setTimeout(changeText,3000)
+        document.querySelector('#nonStop').addEventListener('click',function(){
+            clearTimeout(canChange)
+            console.log("clear timeout ran")
+        })
+    </script>
+</body>
+</html>
