@@ -41,20 +41,16 @@
         //but it will run for infinite time so to stop this we will use clearInterval on stop button so when we press stop this will 
         //stop working
 
-        // document.getElementById('stop').addEventListener('click',function(){
-        //     clearInterval(nonStop)
-        //     console.log("clear interval ran on pressing stop button")
-        // })
+        document.getElementById('stop').addEventListener('click',function(){
+            clearInterval(nonStop)
+            console.log("clear interval ran on pressing stop button")
+        })
 
 
-        //Now we want it to get it started when we press start button ans stop when we use stop button
+        //Now we want it to get it started when we press start button ans stop when we use stop button (which we already did above)
+        let nonStop;
         document.getElementById('start').addEventListener('click',function(){
-            const nonStop=setInterval(change,1000,"num is")
-
-            document.getElementById('stop').addEventListener('click',function(){
-                clearInterval(nonStop)
-                console.log("clear interval ran on pressing stop button")
-            })
+           nonStop=setInterval(change,1000,"num is")
 
         })
     </script>
