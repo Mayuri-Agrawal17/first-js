@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Me and Myself</h1>
+    <p></p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        /*setInterval() is a built-in function in JavaScript.
+        It repeatedly runs a function or code block after a fixed amount of time (in milliseconds).
+        Think of it like a clock alarm that keeps ringing after every X seconds until you stop it.
+
+        In short:
+        setTimeout() runs once,
+        setInterval() runs again and again until you stop it.
+        
+        setInterval() is asynchronous like setTimeout().
+        It does NOT block other code.
+
+        After each delay:
+        The callback is sent to the Event Queue.
+        The Event Loop pushes it to the Call Stack when the main thread is free.
+
+        Important:
+        If the callback takes longer to run than the delay,js won't run them simultaneously, it will wait and might skip intervals.*/
+
+        let x=1
+        const change=function(num){
+            document.querySelector('p').innerHTML+=`${num} ${x} `
+            x=x+1;
+        }
+//code->> const nonStop=setInterval(change,1000,"num is") //can also pass third paramenet and can print it in funtionby passing a
+                                                        //  parameter in function as do do here for num 
+
+        //but it will run for infinite time so to stop this we will use clearInterval on stop button so when we press stop this will 
+        //stop working
+
+        // document.getElementById('stop').addEventListener('click',function(){
+        //     clearInterval(nonStop)
+        //     console.log("clear interval ran on pressing stop button")
+        // })
+
+
+        //Now we want it to get it started when we press start button ans stop when we use stop button
+        document.getElementById('start').addEventListener('click',function(){
+            const nonStop=setInterval(change,1000,"num is")
+
+            document.getElementById('stop').addEventListener('click',function(){
+                clearInterval(nonStop)
+                console.log("clear interval ran on pressing stop button")
+            })
+
+        })
+    </script>
+</body>
+</html>
