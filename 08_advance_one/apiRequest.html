@@ -1,0 +1,106 @@
+<!-- 
+An API (Application Programming Interface) is like a waiter in a restaurant 🍽️.
+
+You = The user (your JavaScript code).
+Kitchen = The system or database where data is stored (like a server).
+Waiter (API) = The middleman who takes your request to the kitchen and brings back the result.
+
+APIs are important because they:
+-Help different programs talk to each other.
+-Allow developers to reuse services instead of building everything from scratch.
+-Keep data secure, as you don’t directly access the database.
+-Make apps dynamic — like getting live weather updates, stock prices, etc.
+
+In JavaScript, APIs are used to get or send data from/to a server without refreshing the page.
+
+In JavaScript:
+-API request = Your order for data.
+-API response = The data returned by the server.
+
+Types of API Request Methods
+These are also called HTTP methods:
+
+Method	             Purpose	              Example
+GET            	To fetch data	            Get weather info
+POST            To send data	            Submit form details
+PUT	            To update data	            Update profile picture
+DELETE	        To delete data	            Delete a user account
+
+*********************************************************************************************************************************
+
+XMLHttpRequest (often called XHR) is a built-in JavaScript object that lets you send and receive data from a server, without reloading 
+the whole web page.
+
+It is the old way of making API requests before fetch() was introduced.
+
+This is what made AJAX (Asynchronous JavaScript and XML) possible.
+AJAX = Update part of a webpage without refreshing.
+
+Example:
+You are chatting on WhatsApp Web.
+Messages update in real-time, but the page does not reload.
+Behind the scenes → APIs are used, and earlier this was done using XHR.
+
+
+To make a request using XHR, you always follow these steps:
+
+Step	    |   What it does	                          |     Example
+--------------------------------------------------------------------------------------------
+1. Create	|   Create a new XHR object	                  |     new XMLHttpRequest()
+2. Open	    |   Set type of request (GET/POST) and URL	  |    .open("GET", "https://api.com")
+3. Listen	|   Tell JS what to do when data comes back	  |    .onload = function(){...}
+4. Send	    |   Actually send the request to the server	  |    .send()-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Old Way: XMLHttpRequest (XHR)
+
+        // Before fetch() existed, developers used XMLHttpRequest to make API calls.
+
+        const xhr= new XMLHttpRequest()    //Creates an object to make the request. Purpose: Prepare to send and receive data.
+        xhr.open('GET',"https://jsonplaceholder.typicode.com/posts/1")  //Setting up the request."GET" → Type of request. URL
+
+        xhr.onload=function(){         //.onload → A callback function that runs when the server sends a response back.
+            if(xhr.status===200){       //xhr.status->Shows the HTTP status code.200 = Success , 404 = Not Found, 500 = Server Error
+                console.log("Response:", xhr.responseText);  //xhr.responseText-Contains the actual data returned by the server.
+            }                                                // Always comes as a string.
+            else{
+                console.error("Error",xhr.status)           
+            }
+        }
+        xhr.send();                           //Finally, this actually sends the request to the server.
+
+//****************************************************************************************************************************
+
+        //Normally, server responses( xxhr.responseText) are in JSON format (JSON String).
+        // We need to convert them to JS objects using JSON.parse().
+
+        const xxhr=new XMLHttpRequest()
+
+        xxhr.open('GET',"https://jsonplaceholder.typicode.com/users")
+
+        xxhr.onload=function(){
+            if (xxhr.status === 200) {
+                const data = JSON.parse(xxhr.responseText); //JSON.parse-> Convert JSON string to JS object 
+                console.log("User List:", data);      //now here we will get the object in data
+                console.log(typeof(data))            //o/p is object
+                console.log(data[0])                //accessing 1st elemnt of object as the o/p is array of object
+                console.log(data[0].address)        //now using dot we can access property
+                console.log(data[0].address.city)   //we have property inside address also so accessing that
+            } else {
+            console.error("Error:", xxhr.status)
+        }
+        }
+        xxhr.send()
+        
+    </script>
+</body>
+</html>
