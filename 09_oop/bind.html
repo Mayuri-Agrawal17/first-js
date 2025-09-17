@@ -1,0 +1,58 @@
+<!-- bind() in JavaScript 📝
+
+The bind() method is used to permanently attach a specific this value to a function and optionally preset arguments.
+It does NOT run the function immediately, it just returns a new copy of the function with the fixed this. 
+
+Why we need bind:
+Sometimes, when you pass a method around, it loses its original this, causing bugs.
+bind() solves this by locking this to the value you want.
+
+
+when event handler methods like handleClick lost their reference to the class instance.
+
+Solution: Use the bind() method to explicitly bind this so that the event handler has access to class properties and methods.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Bind Example</title>
+</head>
+<body>
+  <button>Button Click</button>
+
+  <script>
+    class ReactApp {
+      constructor() {
+        // Define some properties
+        this.server = "HTTP://localhost:3000";
+        this.library = "React Library";
+
+        // Get button reference
+        const button = document.querySelector("button");
+
+        // Attach event listener with bind
+        button.addEventListener("click", this.handleClick.bind(this));  //.bind(this) creates a new version of handleClick where 
+        // this is permanently attached to the class instance.
+
+        /*if we donot use bind here then 
+        When the button is clicked:
+        ✅ "Button Clicked!" appears in the console.
+        ❌ this.server → undefined.
+
+        When we pass this.handleClick directly to addEventListener, this changes context.
+        Inside handleClick, this no longer refers to the class instance, instead it refers to the button element.
+        This is why this.server gives undefined.*/
+      }
+
+      handleClick() {
+        console.log("Button Clicked!");
+        console.log("Server:", this.server);
+        console.log("Library:", this.library);
+      }
+    }
+
+    // Create instance
+    const app = new ReactApp();
+  </script>
+</body>
+</html>
